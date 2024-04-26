@@ -7,3 +7,14 @@ export interface VocabularyProps {
   categories: string | null;
   level: number;
 }
+
+export interface SentenceProps {
+  kanji: string | null;
+  japanese: string;
+  english: string | null;
+  french: string;
+  romaji: string;
+  words: string;
+  grammar: string;
+  level: number;
+}
