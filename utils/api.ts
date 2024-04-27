@@ -1,9 +1,15 @@
 // types
 import { SentenceProps, VocabularyProps } from "@/types"
 
-export const getApi = async (type: string) => {
-  const result = await fetch(`/api/${type}`)
+export const apiAllowedTypes = ['vocabulary', 'sentence']
+
+export const getApi = async (type: string, count?: boolean, limit?: number) => {
+  let apiUrl = `/api/get?type=${type}`
+  count && (apiUrl += '&count=true')
+  limit && (apiUrl += `&limit=${limit}`)
+  const result = await fetch(apiUrl)
   const data = await result.json()
+  console.log('data FRONT : ', data)
   return data
 }
 
