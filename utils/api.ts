@@ -15,7 +15,7 @@ export const getApi = async (type: string, level?: number, count?: boolean, limi
 }
 
 export const postApi = async (type: string, data: VocabularyProps | SentenceProps) => {
-  const result = await fetch(`/api/${type}`, {
+  const result = await fetch(`/api/post?type=${type}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
