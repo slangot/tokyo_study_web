@@ -9,9 +9,9 @@ import db from "../../../config/db"
 import { apiAllowedTypes } from "@/utils/api";
 
 export async function GET(req: NextRequest) {
-
   const count = req.nextUrl.searchParams.get('count')
   let query: string
+  const level = req.nextUrl.searchParams.get('level')
   const limit = req.nextUrl.searchParams.get('limit')
   const type = req.nextUrl.searchParams.get('type')
 
@@ -21,14 +21,23 @@ export async function GET(req: NextRequest) {
     return NextResponse.json(new Error(`Invalid request type : ${type}`));
   }
 
+  // Create the query
+  if (count) {
+    query = `SELECT COUNT(*) FROM ${type}`
+  } else {
+    query = `SELECT * FROM ${type}`
+  }
+
+  if (level !== null) {
+    level && (query = query.concat(` WHERE level = ${parseInt(level)}`))
+  }
+
+  if (limit) {
+    limit && (query = query.concat(` LIMIT ${parseInt(limit)}`))
+  }
+
   try {
     const results: any = await new Promise((resolve, reject) => {
-      if (count) {
-        query = `SELECT COUNT(*) FROM ${type}`
-      } else if (limit) {
-        query = `SELECT * FROM ${type} LIMIT ${parseInt(limit)}`
-      }
-
       db.query(query, (error, results) => {
         if (error) {
           reject(error);
