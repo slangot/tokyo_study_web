@@ -6,6 +6,7 @@ export interface VocabularyProps {
   romaji: string | null;
   categories: string | null;
   level: number;
+  isAnswer?: boolean;
 }
 
 export interface SentenceProps {

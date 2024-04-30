@@ -9,8 +9,10 @@ import db from "../../../config/db"
 import { apiAllowedTypes } from "@/utils/api";
 
 export async function GET(req: NextRequest) {
-  const count = req.nextUrl.searchParams.get('count')
   let query: string
+
+  // URL params
+  const count = req.nextUrl.searchParams.get('count')
   const level = req.nextUrl.searchParams.get('level')
   const limit = req.nextUrl.searchParams.get('limit')
   const type = req.nextUrl.searchParams.get('type')
@@ -33,7 +35,7 @@ export async function GET(req: NextRequest) {
   }
 
   if (limit) {
-    limit && (query = query.concat(` LIMIT ${parseInt(limit)}`))
+    limit && (query = query.concat(` ORDER BY RAND() LIMIT ${parseInt(limit)}`))
   }
 
   try {
