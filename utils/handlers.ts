@@ -1,6 +1,6 @@
 import { VocabularyProps } from "@/types";
 
-const randomizeNumber = (length: number): number[] => {
+export const randomizeNumber = (length: number): number[] => {
   const randomNumbers: number[] = [];
 
   while (randomNumbers.length < 4) {
@@ -12,13 +12,29 @@ const randomizeNumber = (length: number): number[] => {
   return randomNumbers;
 }
 
-const randomizeData = (data: VocabularyProps[]): VocabularyProps[] => {
-  for (const item of data) {
-    item.isAnswer = false;
-  }
-  data[0].isAnswer = true;
+export const randomizeData = (data: VocabularyProps[]): VocabularyProps[] => {
   const randomData: VocabularyProps[] = data.sort(() => Math.random() - 0.5);
   return randomData;
 }
 
-export { randomizeData, randomizeNumber }
+export const manageScore = (isCorrect: boolean, score: number, setScore: (score: number) => void, scoreMax: number, setScoreMax: (scoreMax: number) => void): void => {
+  if (isCorrect) {
+    setScore(score + 1);
+    setScoreMax(scoreMax + 1);
+  } else {
+    setScoreMax(scoreMax + 1);
+  }
+}
+
+export const dbType = (exerciceType: string, level: string): string => {
+  switch (exerciceType) {
+    case "vocabulary":
+      return level === "6" ? "vocabulary_extra" : "vocabulary";
+    case "grammar":
+      return "grammar";
+    case "sentence":
+      return level === "6" ? "sentence_extra" : "sentence";
+    default:
+      return "vocabulary";
+  }
+}

@@ -3,7 +3,7 @@ import { SentenceProps, VocabularyProps } from "@/types"
 
 export const apiAllowedTypes = ['grammar', 'grammar_examples', 'sentence', 'sentence_extra', 'vocabulary', 'vocabulary_extra']
 
-export const getApi = async (type: string, level?: number, count?: boolean, limit?: number) => {
+export const getApi = async (type: string, level?: string, count?: boolean, limit?: number) => {
   let apiUrl = `/api/get?type=${type}`
   count && (apiUrl += '&count=true')
   level && (apiUrl += `&level=${level}`)
