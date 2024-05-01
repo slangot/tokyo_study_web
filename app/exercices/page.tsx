@@ -3,6 +3,9 @@
 // Next
 import Link from "next/link"
 
+// Icons
+import { FaPlus } from "react-icons/fa6"
+
 const Exercices = () => {
   return (
     <div>
@@ -15,6 +18,7 @@ const Exercices = () => {
           <div className="exerciceSubBlock">
             <h3 className="secondSubtitle">Vocabulaire</h3>
             <div className="flex flex-row justify-evenly">
+              <Link className="levelButton" href="/exercices/quiz?type=vocabulary&level=6"><FaPlus /></Link>
               <Link className="levelButton" href="/exercices/quiz?type=vocabulary&level=5">N5</Link>
               <Link className="levelButton" href="/exercices/quiz?type=vocabulary&level=4">N4</Link>
               <Link className="levelButton" href="/exercices/quiz?type=vocabulary&level=3">N3</Link>

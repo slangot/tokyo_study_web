@@ -32,7 +32,7 @@ body {
 }
 
 .exerciceContentBlock {
-  @apply relative flex flex-row md:flex-col w-[100%] flex-wrap items-center justify-evenly py-5 rounded-lg
+  @apply relative flex flex-col w-[100%] flex-wrap items-center justify-evenly py-5 rounded-lg
 }
 
 .exerciceSubBlock {

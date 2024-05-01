@@ -133,10 +133,12 @@ const Quiz = () => {
                 }
               </div>
             }
-            {answers.length > 0 && answers.map((answer, index) => (
-              answer.french && answer.isAnswer !== undefined && exerciceType &&
-              <ExerciceQuizButton key={index} content={answer.french} action={handleNext} isAnswer={answer.isAnswer} showAnswers={showAnswers} exerciceType={exerciceType} />
-            ))}
+            <div className="flex items-center justify-evenly flex-wrap w-full">
+              {answers.length > 0 && answers.map((answer, index) => (
+                answer.french && answer.isAnswer !== undefined && exerciceType &&
+                <ExerciceQuizButton key={index} content={answer.french} action={handleNext} isAnswer={answer.isAnswer} showAnswers={showAnswers} exerciceType={exerciceType} />
+              ))}
+            </div>
           </>
         }
       </div>
