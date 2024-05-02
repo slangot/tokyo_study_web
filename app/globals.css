@@ -67,6 +67,18 @@ body {
   @apply text-2xl text-yellow-600 text-center font-bold mb-4
 }
 
+.dropdown {
+  @apply absolute z-50 right-0 top-0 mt-3 w-full h-full p-5 rounded-lg bg-dark min-w-[210px] min-h-[500px] flex flex-col gap-2 justify-center items-center;
+}
+
+.dropdown_link {
+  @apply text-3xl text-white hover:text-primary my-3 font-medium;
+}
+
+.dropdown_close {
+  @apply absolute top-3 right-3 p-3 text-3xl text-white hover:text-primary;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
