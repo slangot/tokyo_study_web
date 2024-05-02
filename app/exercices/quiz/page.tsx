@@ -112,7 +112,7 @@ const Quiz = () => {
         <h1 className="exerciceTitle">Quiz {exerciceType} {level && `N${level}`}</h1>
         <p>{score}/{scoreMax}</p>
       </div>
-      <div className="exerciceContentBlock" style={isCorrect === undefined ? { boxShadow: 'none' } : isCorrect ? { boxShadow: '0px 0px 9px 3px green' } : { boxShadow: '0px 0px 9px 3px red' }}>
+      <div className="exerciceContentBlock">
         {level &&
           <div className='absolute top-0 flex justify-end w-full h-auto -my-1 px-3'>
             <EyeButton state={showFurigana} setState={setShowFurigana} label="字" />
@@ -136,18 +136,18 @@ const Quiz = () => {
                 {correctAnswer.kanji ?
                   showFurigana ?
                     exerciceType !== 'sentence' ?
-                      <ruby>{correctAnswer.kanji}。<rp>(</rp><rt>{correctAnswer.japanese}</rt><rp>)</rp></ruby>
+                      <ruby><span className="text-4xl">{correctAnswer.kanji}</span><rp>(</rp><rt className="mb-3">{correctAnswer.japanese}</rt><rp>)</rp></ruby>
                       :
                       <div className="flex flex-col items-center justify-center">
                         <h3>{correctAnswer.kanji}</h3>
                         <p className="text-lg mt-2 text-light">{correctAnswer.japanese}</p>
                       </div>
-                    : correctAnswer.kanji
-                  : correctAnswer.japanese
+                    : <span className="text-5xl">{correctAnswer.kanji}</span>
+                  : <span className="text-5xl">{correctAnswer.japanese}</span>
                 }
               </div>
             }
-            <div className="flex items-center justify-evenly flex-wrap w-full">
+            <div className="flex items-center justify-evenly flex-wrap w-full" style={isCorrect === undefined ? { boxShadow: 'none' } : isCorrect ? { boxShadow: '0px 0px 9px 3px green' } : { boxShadow: '0px 0px 9px 3px red' }}>
               {answers.length > 0 && answers.map((answer, index) => (
                 answer.french && answer.isAnswer !== undefined && exerciceType &&
                 <ExerciceQuizButton key={index} content={answer.french} action={handleNext} isAnswer={answer.isAnswer} showAnswers={showAnswers} exerciceType={exerciceType} />

@@ -44,7 +44,7 @@ body {
 }
 
 .exerciceShortContentDisplay {
-  @apply flex items-center text-ellipsis justify-center text-xl w-[150px] h-[150px] my-4 rounded-xl bg-gray-800
+  @apply flex items-center text-ellipsis justify-center text-xl w-[150px] h-[150px] my-4 rounded-xl bg-gray-800 px-1
 }
 
 .exerciceTitle {
