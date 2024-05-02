@@ -1,4 +1,5 @@
 export interface VocabularyProps {
+  id?: number;
   kanji: string | null;
   japanese: string;
   english: string | null;
@@ -6,10 +7,12 @@ export interface VocabularyProps {
   romaji: string | null;
   categories: string | null;
   level: number;
+  reported: boolean;
   isAnswer?: boolean;
 }
 
 export interface SentenceProps {
+  id?: number;
   kanji: string | null;
   japanese: string;
   english: string | null;
@@ -18,4 +21,5 @@ export interface SentenceProps {
   words: string;
   grammar: string;
   level: number;
+  reported: boolean;
 }

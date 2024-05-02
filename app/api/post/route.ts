@@ -4,9 +4,18 @@ import { NextRequest, NextResponse } from "next/server";
 // Config
 import db from "../../../config/db"
 
-export async function POST(req: NextRequest, res: NextResponse, tableName: string, columns: string[]) {
+// Utils
+import { apiAllowedTypes } from "@/utils/api";
+
+export async function POST(req: NextRequest, res: NextResponse) {
   const body = await req.json();
   const type = req.nextUrl.searchParams.get('type')
+
+  // Check if the request type is allowed
+  if (type && !apiAllowedTypes.includes(type)) {
+    console.error(`Invalid request type : ${type}`);
+    return NextResponse.json(new Error(`Invalid request type : ${type}`));
+  }
 
   const ObjectKeys = Object.keys(body);
   const ObjectValues = Object.values(body);
