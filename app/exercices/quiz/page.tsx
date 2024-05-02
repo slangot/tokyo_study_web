@@ -6,6 +6,9 @@ import { useEffect, useState } from "react"
 // Next
 import { useSearchParams } from "next/navigation"
 
+// Icons
+import { FaRegCircleQuestion } from "react-icons/fa6"
+
 // Packages
 import { RotatingLines } from "react-loader-spinner"
 
@@ -16,7 +19,7 @@ import { VocabularyProps } from "@/types"
 import { BackButton, ExerciceQuizButton, EyeButton } from "@/uikit/Buttons";
 
 // Utils
-import { getApi } from "@/utils/api"
+import { getApi, putApi } from "@/utils/api"
 import { dbType, manageScore, randomizeData } from "@/utils/handlers"
 
 const Quiz = () => {
@@ -46,6 +49,7 @@ const Quiz = () => {
   const fetchData = async (dbType: string, level: string) => {
     try {
       const results = await getApi(dbType, level, false, 4)
+
       for (const item of results) {
         item.isAnswer = false
       }
@@ -73,6 +77,16 @@ const Quiz = () => {
         setIsCorrect(undefined)
       }
     }, 1500)
+  }
+
+  const handleReport = async (id: number | undefined) => {
+    try {
+      if (exerciceType && id) {
+        const results = await putApi(exerciceType, "reported", 1, id)
+      }
+    } catch (error) {
+      console.error("error : ", error)
+    }
   }
 
   useEffect(() => {
@@ -139,6 +153,7 @@ const Quiz = () => {
                 <ExerciceQuizButton key={index} content={answer.french} action={handleNext} isAnswer={answer.isAnswer} showAnswers={showAnswers} exerciceType={exerciceType} />
               ))}
             </div>
+            {correctAnswer && <button className="absolute -bottom-5 right-0 flex items-end justify-end" onClick={() => handleReport(correctAnswer.id)}><FaRegCircleQuestion color={'#653C87'} /></button>}
           </>
         }
       </div>
