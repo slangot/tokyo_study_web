@@ -21,7 +21,8 @@ const config: Config = {
         "medium-dark": "#1A0129",
         "dark": "#11001C",
         "dark-gray": 'rgb(17,24,39)',
-        "light": "#E6D7FA"
+        "light": "#E6D7FA",
+        "dark-purple": "#00011d"
       }
     },
   },

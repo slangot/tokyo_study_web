@@ -18,13 +18,13 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  background-image: url('../public/bg-dark.jpg');
+  background-repeat: repeat;
+  background-blend-mode: saturation;
 }
 
 .app {
-  @apply relative z-10 flex flex-col max-w-7xl mx-auto sm:px-16 px-6;
+  @apply relative z-10 flex flex-col w-full mx-auto;
 }
 
 .exerciceBlock {
@@ -79,8 +79,46 @@ body {
   @apply absolute top-3 right-3 p-3 text-3xl text-white hover:text-primary;
 }
 
+.home-arrow {
+  animation: arrowAnimation 2s infinite;
+}
+
+.home-button {
+  @apply flex flex-col items-center justify-center flex-1 mx-2 md:mx-5 my-5 md:my-10 px-5 md:py-5 border-primary border-4 shadow-2xl shadow-dark rounded-xl bg-black transition-all duration-300 ease-in-out
+}
+
+.home-button:hover {
+  @apply translate-y-2 bg-primary text-white transition-all duration-300 ease-in-out
+}
+
+.home-button-text {
+  @apply font-bold text-2xl mb-2 uppercase
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@keyframes arrowAnimation {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(5px);
+  }
+
+  70% {
+    transform: translateY(-1px);
+  }
+
+  80% {
+    transform: translateY(2px);
+  }
+
+  100% {
+    transform: translateY(0);
   }
 }
