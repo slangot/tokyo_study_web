@@ -23,3 +23,8 @@ export interface SentenceProps {
   level: number;
   reported: boolean;
 }
+
+export interface exerciceQuizSelection {
+  status: boolean;
+  type: string;
+}

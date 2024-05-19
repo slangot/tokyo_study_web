@@ -14,7 +14,7 @@ const Nav = () => {
   const [toggleDropdown, setToggleDropdown] = useState(false)
 
   return (
-    <nav className="flex flex-1 flex-between items-center w-screen py-2 px-5 border-b-2 border-dark bg-dark">
+    <nav className="relative z-30 flex flex-1 flex-between items-center w-screen py-2 px-5 border-b-2 border-dark bg-dark">
       <Link href="/" className="flex flex-1 flex-center">
         <Image src="/logo.png" alt="Tokyo Study logo" width={80} height={80} className="object-contain" />
       </Link>

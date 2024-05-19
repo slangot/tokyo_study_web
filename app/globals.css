@@ -20,47 +20,43 @@ body {
   color: rgb(var(--foreground-rgb));
   background-image: url('../public/bg-dark.jpg');
   background-repeat: repeat;
-  background-blend-mode: saturation;
+  background-color: rgb(var(--background-start-rgb));
 }
 
 .app {
   @apply relative z-10 flex flex-col w-full mx-auto;
 }
 
-.exerciceBlock {
-  @apply flex flex-col w-full my-2 py-3 rounded-lg bg-fourth
-}
-
 .exerciceContentBlock {
   @apply relative flex flex-col w-[100%] flex-wrap items-center justify-evenly py-5 rounded-lg
 }
 
-.exerciceSubBlock {
-  @apply flex flex-col w-auto justify-center mx-3 my-4 py-4 rounded-lg
-}
-
 .exerciceLongContentDisplay {
-  @apply flex items-center text-ellipsis justify-center text-lg md:text-3xl w-[95%] h-auto my-2 px-2 py-3 rounded-xl bg-gray-800
+  @apply flex items-center text-ellipsis break-words justify-center text-lg md:text-3xl w-[95%] h-auto my-2 px-2 py-3 rounded-xl bg-gray-800
 }
 
 .exerciceShortContentDisplay {
-  @apply flex items-center text-ellipsis justify-center text-xl w-[150px] h-[150px] my-4 rounded-xl bg-gray-800 px-1
+  @apply flex items-center text-ellipsis break-words justify-center text-xl w-[150px] h-[150px] my-4 rounded-xl bg-gray-800 px-1
 }
 
 .exerciceTitle {
   @apply flex-1 text-center text-xl font-bold text-primary
 }
 
-.levelButton {
-  @apply flex items-center justify-center p-3 bg-primary text-white rounded font-bold
+.exerciceButton {
+  @apply flex flex-col items-center justify-center px-3 py-5 my-2 md:w-1/2 md:mx-auto uppercase bg-primary text-white rounded font-bold
 }
 
-.secondSubtitle {
-  @apply text-center text-xl font-bold mb-3 text-light
+.exerciceButtonLanguageContainer {
+  @apply flex flex-row
 }
 
-.subtitle {
-  @apply text-center text-2xl underline font-bold text-white
+.exerciceButtonLanguage {
+  @apply flex flex-row items-center justify-center bg-light text-black p-2 m-2 rounded-md shadow-lg
+}
+
+.levelSelectButton {
+  @apply flex flex-1 py-2 items-center justify-center bg-light text-black transition-all duration-300 ease-in-out
 }
 
 .title {
@@ -68,7 +64,7 @@ body {
 }
 
 .dropdown {
-  @apply absolute z-50 right-0 top-0 mt-3 w-full h-full p-5 rounded-lg bg-dark min-w-[210px] min-h-[500px] flex flex-col gap-2 justify-center items-center;
+  @apply absolute z-50 right-0 top-0 mt-3 w-full h-[100dvh] p-5 rounded-lg bg-dark min-w-[210px] min-h-[500px] flex flex-col gap-2 justify-center items-center;
 }
 
 .dropdown_link {
