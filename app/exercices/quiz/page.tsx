@@ -28,6 +28,7 @@ const Quiz = () => {
   const searchParams = useSearchParams()
   const exerciceType = searchParams.get("type")
   const level = searchParams.get("level")
+  const lang = searchParams.get("lang")
 
   // Platform
   let isSafari = false
@@ -107,7 +108,8 @@ const Quiz = () => {
 
   return (
     <div className="relative flex flex-col items-center justify-center w-full h-full">
-      <div className="flex flex-row items-center justify-center w-full mb-3">
+      {correctAnswer && <div className="absolute z-1 top-0 h-48 w-screen rounded-b-full" style={isCorrect !== undefined ? isCorrect ? { backgroundColor: 'green', filter: "blur(4px)" } : { backgroundColor: 'red', filter: "blur(4px)" } : {}} />}
+      <div className="relative z-10 flex flex-row items-center justify-center w-full mb-3 px-3">
         <BackButton url="/exercices" />
         <h1 className="exerciceTitle">Quiz {exerciceType} {level && `N${level}`}</h1>
         <p>{score}/{scoreMax}</p>
@@ -132,7 +134,7 @@ const Quiz = () => {
           :
           <>
             {correctAnswer &&
-              <div className="flex items-center justify-center text-2xl md:text-4xl lg:text-5xl font-bold mb-2 mt-2 py-3" style={isCorrect === undefined ? { color: 'white' } : isCorrect ? { color: 'green' } : { color: 'red' }}>
+              <div className="flex items-center justify-center text-2xl md:text-4xl lg:text-5xl font-bold mb-2 mt-2 py-3">
                 {correctAnswer.kanji ?
                   showFurigana ?
                     exerciceType !== 'sentence' ?
@@ -147,7 +149,7 @@ const Quiz = () => {
                 }
               </div>
             }
-            <div className="flex items-center justify-evenly flex-wrap w-full" style={isCorrect === undefined ? { boxShadow: 'none' } : isCorrect ? { boxShadow: '0px 0px 9px 3px green' } : { boxShadow: '0px 0px 9px 3px red' }}>
+            <div className="flex items-center justify-evenly flex-wrap w-full">
               {answers.length > 0 && answers.map((answer, index) => (
                 answer.french && answer.isAnswer !== undefined && exerciceType &&
                 <ExerciceQuizButton key={index} content={answer.french} action={handleNext} isAnswer={answer.isAnswer} showAnswers={showAnswers} exerciceType={exerciceType} />
